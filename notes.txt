@@ -1,3 +1,7 @@
+====================================
+Phase-1: Build Foundation for MLOps
+====================================
+
 Step-1: Create virtual environment
 python -m venv kiet-cse
 
@@ -21,3 +25,41 @@ python train.py
 Step-6: Create and start the FastAPI
 uvicorn main:app --reload
 python -m uvicorn main:app --reload
+
+For API Testing use this data:
+{
+    "sepal_length": 5.1,
+    "sepal_width": 3.5,
+    "petal_length": 1.6,
+    "petal_width": 0.5
+}
+
+====================================
+Phase-2: Dockerize ML Application
+====================================
+
+Traditional ML Flow:
+Dataset -> Train -> Model Evaluation -> Prediction
+
+Production Ready ML Application
+Saved Model -> Python App -> REST API -> Automated Test -> Docker Container -> CI/CD
+Can be tested, deployed, accessed by clients and maintained consistently
+
+
+Why we need Docker ?
+- Imagine right now ML application is working on your macbook, but fails on another engineer laptop that runs it on a Linux/windows server
+
+Possible reasons of failure:
+- Different Python Versions
+- Different versions of scikit-learn or FastAPI
+- Missing Python Packages
+- Different OS dependencies
+
+Docker helps package your application code, runtime, dependencies and startup instructions into a standardized image
+
+4 major requirements:
+- Dockerfile - Instructions for packaging the ML application
+- Image - packaged reusable application artifact
+- Container - Running instance of that image
+- Port mapping - Makes the API inside the container accessible from your system
+
