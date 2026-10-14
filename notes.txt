@@ -20,3 +20,4 @@ python train.py
 
 Step-6: Create and start the FastAPI
 uvicorn main:app --reload
+python -m uvicorn main:app --reload

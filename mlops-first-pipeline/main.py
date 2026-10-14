@@ -15,6 +15,26 @@ class IrisInput(BaseModel):
     petal_width: float = Field(gt=0)
 
 
+@app.get("/")
+def health_check():
+    return {"status": "Ready to serve"}
+
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+# Endpoint for making predictions with the Iris Random Forest model
+@app.post("/predict")
+def predict(data: IrisInput):
+    features = [[
+        data.sepal_length,
+        data.sepal_width,
+        data.petal_length,
+        data.petal_width
+    ]]
+    prediction = int(model.predict(features)[0])
+    print("Prediction is",prediction)
+    return {
+        "prediction": prediction,
+        "class_name": ["setosa", "versicolor", "virginica"][prediction]
+    }
