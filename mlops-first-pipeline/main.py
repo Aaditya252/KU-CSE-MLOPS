@@ -16,7 +16,7 @@ class IrisInput(BaseModel):
 
 
 @app.get("/")
-def health_check():
+def ready_to_serve():
     return {"status": "Ready to serve"}
 
 @app.get("/health")

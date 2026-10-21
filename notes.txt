@@ -63,3 +63,54 @@ Docker helps package your application code, runtime, dependencies and startup in
 - Container - Running instance of that image
 - Port mapping - Makes the API inside the container accessible from your system
 
+Commands for Docker
+1. docker ps = print all running containers
+2. docker ps -a = print all active/non-active containers
+3. docker build -t cse-mlops .
+= build docker image
+-t = tag = name of the image
+4. docker images = List locally available docker images
+5. Start the container:
+docker run -d --name iris-ml-api -p 8000:8000 cse-mlops
+
+====================================
+Phase-3: Automated Testing and CI/CD with GitHub Actions
+====================================
+
+What's our Goal ?
+Developer pushes code to GitHub
+GitHub actions start the workflow
+Triggered by a push or pull request
+
+Run tests:
+Validate model API behavior
+Build image
+Verify Docker Packaging
+
+
+What is CI/CD ?
+- CI - Continuous Integration: Automatically validates code changes through tests and build checks
+- CD - Continuous Delivery: Keeps changes ready for release, with production release potentially requiring approval
+- CD - Continuous Deployment - Automatically releases changes to production when all required checks pass
+
+
+Automated Testing
+- Automated testing catches issues before a change moves to production
+- Pytest + FastAPI Test Client + GitHub Actions
+
+Update the project structure
+- mlops-first-pipeline
+---- tests
+-------- test_api.py
+---- .github
+-------- workflows
+------------ ci.yml
+
+Now install two new packages:
+- httpx: FastAPI TestClient uses HTTPx to simulate http request to your application
+- pytest: It discovers and run automated tests, report failures, and returns non-zero exit status when tests fail
+
+pip install httpx pytest
+
+Run Test Locally
+python -m pytest -v
