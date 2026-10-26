@@ -30,7 +30,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
 
 # Save the trained model
-model_dir = Path("models")
+model_dir = Path(__file__).resolve().parent / "models"
 model_dir.mkdir(parents=True, exist_ok=True)
 model_path = model_dir / "iris_random_forest_model.joblib"
 joblib.dump(clf, model_path)

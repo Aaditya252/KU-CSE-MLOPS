@@ -3,7 +3,7 @@ import joblib
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
-MODEL_PATH = Path("models/iris_random_forest_model.joblib")
+MODEL_PATH = Path(__file__).resolve().parent / "models" / "iris_random_forest_model.joblib"
 model = joblib.load(MODEL_PATH)
 
 app = FastAPI(title="Iris Random Forest API")

@@ -33,7 +33,7 @@ jobs:
       - name: Run Pytest
         working-directory: ./mlops-first-pipeline
         run: |
-          pytest -v
+          python -m pytest -v
 
   docker-build:
     name: Build & Verify Docker Image

@@ -1,6 +1,6 @@
 # Start with a lightweight Python image
 # This gives our container a Python runtime
-FROM python:3.14-slim
+FROM python:3.13-slim
 
 # Set the working directory inside the container
 WORKDIR /app

@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Ensure the application directory is in sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 # Import TestClient so we can send simulated HTTP requests directly to FastAPI
 from fastapi.testclient import TestClient
 
